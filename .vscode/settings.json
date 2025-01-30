@@ -1,0 +1,67 @@
+{
+  // Python-specific settings
+  "[python]": {
+    "editor.formatOnSave": true, // Format on save for Python files
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit" // Apply all possible fixes on save
+    },
+    "editor.defaultFormatter": "charliermarsh.ruff", // Use Ruff as the default formatter
+    "editor.tabSize": 4, // Set the tab size to 4 spaces for Python files
+  },
+  // Django html configuration with Djlint
+  "[django-html][django-txt]": {
+    "editor.defaultFormatter": "monosans.djlint",
+    "editor.formatOnSave": true,
+    "djlint.enableLinting": true
+  },
+  "djlint.formatCss": true,
+  "djlint.formatJs": true,
+  "djlint.preserveBlankLines": true,
+  "djlint.indentCss": 2,
+
+  // Ruff configuration
+  "ruff.lint.args": ["--config=backend/pyproject.toml"], // Point Ruff to the pyproject.toml config file
+  "ruff.organizeImports": true, // Organize imports automatically
+  "ruff.fixAll": true, // Apply all Ruff fixes
+
+  // Pylance/Type Checking configuration
+  "python.analysis.typeCheckingMode": "off", // Disable type checking (handled by MyPy instead)
+  "mypy-type-checker.args": ["--config-file=backend/pyproject.toml"], // MyPy to use pyproject.toml config
+
+  // Interpreter settings
+  "python.defaultInterpreterPath": "./backend/.venv/bin/python", // Point to Poetry's virtual environment
+
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.extraPaths": ["./backend"],
+
+  // Package indexing for autocomplete
+  "python.analysis.packageIndexDepths": [
+    {
+      "name": "django", // Increase Django indexing depth for better autocomplete
+      "depth": 5,
+      "includeAllSymbols": true
+    },
+    {
+      "name": "rest_framework", // Increase DRF indexing depth for better autocomplete
+      "depth": 5,
+      "includeAllSymbols": true
+    },
+    {
+      "name": "allauth",
+      "depth": 5,
+      "includeAllSymbols": true
+    }
+  ],
+  // Settings for Typescript & Javascript
+  "[typescript][javascript][typescriptreact][json][html]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.tabSize": 2,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "javascript.format.enable": false,
+  "jest.runMode": "on-demand",
+}
